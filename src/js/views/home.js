@@ -16,15 +16,15 @@ export const Home = () => {
   return (
     <div
       style={{
-        backgroundImage: `url('https://data.1freewallpapers.com/download/starry-sky-stars-black-glitter-3840x2160.jpg')`,
-        backgroundSize: 'cover',
+        backgroundImage: `url('https://images5.alphacoders.com/903/thumb-1920-903317.jpg')`,
+        backgroundSize: 'fixed',
         backgroundPosition: 'center',
         padding: '20px',
       }}
     >
-      <div className="container">
+      <div className="container text-center">
         <h2 className="text-light mb-4">Characters</h2>
-        <div className="row">
+        <div className="row justify-content-center" style={{ gap: '10px' }}>
           {store.characters?.map((character) => (
             <div className="col-6 col-md-4 col-lg-3 mb-4" key={character.uid}>
               <div className="card-fixed position-relative">
@@ -34,7 +34,7 @@ export const Home = () => {
                   id={character.uid}
                   imageStyle={{ width: '100%', height: '150px', objectFit: 'cover' }}
                 />
-                {/* Botón de corazón de FontAwesome */} 
+                
                 <button
                   type="button"
                   className="position-absolute"
@@ -57,7 +57,7 @@ export const Home = () => {
         </div>
 
         <h2 className="text-light mb-4">Vehicles</h2>
-        <div className="row">
+        <div className="row justify-content-center" style={{ gap: '10px' }}>
           {store.vehicles?.map((vehicle) => (
             <div className="col-6 col-md-4 col-lg-3 mb-4" key={vehicle.uid}>
               <div className="card-fixed position-relative">
@@ -67,7 +67,7 @@ export const Home = () => {
                   id={vehicle.uid}
                   imageStyle={{ width: '100%', height: '150px', objectFit: 'cover' }}
                 />
-                {/* Botón de corazón de FontAwesome */}
+                
                 <button
                   type="button"
                   className="position-absolute"
@@ -90,7 +90,7 @@ export const Home = () => {
         </div>
 
         <h2 className="text-light mb-4">Planets</h2>
-        <div className="row">
+        <div className="row justify-content-center" style={{ gap: '10px' }}>
           {store.planets?.map((planet) => (
             <div className="col-6 col-md-4 col-lg-3 mb-4" key={planet.uid}>
               <div className="card-fixed position-relative">
@@ -100,7 +100,7 @@ export const Home = () => {
                   id={planet.uid}
                   imageStyle={{ width: '100%', height: '150px', objectFit: 'cover' }}
                 />
-                {/* Botón de corazón de Fontawesome */}
+                
                 <button
                   type="button"
                   className="position-absolute"

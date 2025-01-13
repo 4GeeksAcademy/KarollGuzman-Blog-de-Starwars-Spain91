@@ -15,7 +15,7 @@ export const Navbar = () => {
         href="https://fonts.googleapis.com/css2?family=SF+Distant+Galaxy&display=swap"
         rel="stylesheet"
       />
-      <div className="container d-flex justify-content-center" style={{ height: '15vh' }}>
+      <div className="container d-flex justify-content-between align-items-center" style={{ height: '15vh' }}>
         <div>
           <img
             src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Star_Wars_Logo.svg/2560px-Star_Wars_Logo.svg.png"
@@ -35,10 +35,10 @@ export const Navbar = () => {
             style={{ marginRight: '50px' }}
           >
             Favorites: {favsCount}
-          </button>
 
+          </button>
           <div
-            className="dropdown-menu text-black" // Alinea el dropdown a la derecha
+            className="dropdown-menu text-black" 
             aria-labelledby="dropdownMenu2"
           >
             <ul>
