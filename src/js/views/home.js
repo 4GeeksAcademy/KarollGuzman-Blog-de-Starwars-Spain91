@@ -49,7 +49,7 @@ export const Home = () => {
                   }}
                   onClick={() => actions.addToFavorites(character.name)}
                 >
-                  <i class="fas fa-heart"></i>
+                  <i class="far fa-heart"></i>
                 </button>
               </div>
             </div>
@@ -82,7 +82,7 @@ export const Home = () => {
                   }}
                   onClick={() => actions.addToFavorites(vehicle.name)}
                 >
-                  <i class="fas fa-heart"></i>
+                  <i class="far fa-heart"></i>
                 </button>
               </div>
             </div>
@@ -115,7 +115,7 @@ export const Home = () => {
                   }}
                   onClick={() => actions.addToFavorites(planet.name)}
                 >
-                  <i class="fas fa-heart"></i>
+                  <i class="far fa-heart"></i>
                 </button>
               </div>
             </div>
