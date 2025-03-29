@@ -1,33 +1,53 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import { useNavigate } from "react-router";
 import { Context } from "../store/appContext";
 
-const Card = ({ name, type, id }) => {
-  const { store, actions } = useContext(Context);
-  const navigate = useNavigate();
-  return (
-    <div className="card" style={{ width: "18rem" }}>
-      <img
-        src={
-          name == "Tatooine"
-            ? `https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/ed97b542-8697-4d5c-a783-0dd8185c89d0/d15sn9h-b91d0d97-8378-4b8c-b943-dd1b39a21a84.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2VkOTdiNTQyLTg2OTctNGQ1Yy1hNzgzLTBkZDgxODVjODlkMFwvZDE1c245aC1iOTFkMGQ5Ny04Mzc4LTRiOGMtYjk0My1kZDFiMzlhMjFhODQuanBnIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.TbpQRH5usavAhtJl_KJ7Tg7eyJBgiVM7fwz7iddfc_4`
-            : `https://starwars-visualguide.com/assets/img/${type}/${id}.jpg`
-        }
-        className="card-img-top"
-        alt="..."
-      />
-      <div className="card-body">
-        <h5 className="card-title">{name}</h5>
-        <button
-          type="button"
-          className="btn btn-warning"
-          onClick={() => navigate(`/detail-${type}/${id}`)}
-        >
-          View More
-        </button>
-      </div>
-    </div>
-  );
+const Card = ({ name, type, id, uid }) => {
+    const { store, actions } = useContext(Context);
+    const navigate = useNavigate();
+
+    // Verificar si esta carta específica es favorita
+    const isFavorite = store.favorites.some(
+        (fav) => fav.uid === uid && fav.type === type
+    );
+
+    const toggleFavorite = (e) => {
+        e.stopPropagation(); // Detener la propagación del evento
+        e.preventDefault(); // Prevenir el comportamiento por defecto
+        actions.addToFavorites({ uid, type, name }); // Llama a la acción del flux
+    };
+
+    return (
+        <div className="card card-fixed" style={{ width: "18rem" }}>
+            <img
+                src={`https://starwars-visualguide.com/assets/img/${type}/${id}.jpg`}
+                className="card-img-top"
+                alt={name}
+            />
+            <div className="card-body">
+                <h5 className="card-title text-truncate">{name}</h5>
+                <div className="d-flex justify-content-between align-items-center mt-3">
+                    <button
+                        type="button"
+                        className="btn btn-warning"
+                        onClick={() => navigate(`/detail-${type}/${uid}`)}
+                    >
+                        View More
+                    </button>
+                    <button
+                        className="btn btn-outline-danger"
+                        onClick={toggleFavorite}
+                    >
+                        <i
+                            className={`fa-heart ${
+                                isFavorite ? "fa-solid text-danger" : "fa-regular"
+                            }`}
+                        ></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    );
 };
 
 export default Card;

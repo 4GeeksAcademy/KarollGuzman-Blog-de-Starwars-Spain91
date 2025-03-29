@@ -62,19 +62,36 @@ const getState = ({ getStore, getActions, setStore }) => {
                     })
                     .catch(error => console.error("Error fetching planet:", error));
             },
-            deleteFavorite: (id) => {
+                        deleteFavorite: (item) => {
                 const store = getStore();
-                store.favorites = store.favorites.filter((_, index) => index !== id);
-                setStore({ favorites: [...store.favorites] })
+            
+                // Filtrar el elemento a eliminar
+                const updatedFavorites = store.favorites.filter(
+                    (fav) => !(fav.uid === item.uid && fav.type === item.type)
+                );
+            
+                // Actualizar el estado global
+                setStore({ favorites: updatedFavorites });
             },
-            addToFavorites: (item) => {
-                const store = getStore();
-                setStore({
-                    favorites: [...store.favorites, item]
-                });
-                // localStorage.setItem('favorites', JSON.stringify(newFavorites))
-                console.log(store.favorites)
-            }
+                                    addToFavorites: (item) => {
+                            const store = getStore();
+                        
+                            // Verificar si el elemento ya está en favoritos
+                            const isFavorite = store.favorites.some(
+                                (fav) => fav.uid === item.uid && fav.type === item.type
+                            );
+                        
+                            if (isFavorite) {
+                                // Si ya está en favoritos, eliminarlo
+                                const updatedFavorites = store.favorites.filter(
+                                    (fav) => !(fav.uid === item.uid && fav.type === item.type)
+                                );
+                                setStore({ favorites: updatedFavorites });
+                            } else {
+                                // Si no está en favoritos, agregarlo
+                                setStore({ favorites: [...store.favorites, item] });
+                            }
+                        },
             
         }
     };

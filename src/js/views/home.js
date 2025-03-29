@@ -29,9 +29,11 @@ export const Home = () => {
             <div className="col-6 col-md-4 col-lg-3 mb-4" key={character.uid}>
               <div className="card-fixed position-relative">
                 <Card
+                  key={character.uid}
                   name={character.name}
                   type="characters"
                   id={character.uid}
+                  uid={character.uid}
                   imageStyle={{ width: '100%', height: '150px', objectFit: 'cover' }}
                 />
                 
@@ -49,7 +51,6 @@ export const Home = () => {
                   }}
                   onClick={() => actions.addToFavorites(character.name)}
                 >
-                  <i class="far fa-heart"></i>
                 </button>
               </div>
             </div>
@@ -62,9 +63,11 @@ export const Home = () => {
             <div className="col-6 col-md-4 col-lg-3 mb-4" key={vehicle.uid}>
               <div className="card-fixed position-relative">
                 <Card
+                  key={vehicle.uid}
                   name={vehicle.name}
                   type="vehicles"
                   id={vehicle.uid}
+                  uid={vehicle.uid}
                   imageStyle={{ width: '100%', height: '150px', objectFit: 'cover' }}
                 />
                 
@@ -82,7 +85,6 @@ export const Home = () => {
                   }}
                   onClick={() => actions.addToFavorites(vehicle.name)}
                 >
-                  <i class="far fa-heart"></i>
                 </button>
               </div>
             </div>
@@ -95,9 +97,11 @@ export const Home = () => {
             <div className="col-6 col-md-4 col-lg-3 mb-4" key={planet.uid}>
               <div className="card-fixed position-relative">
                 <Card
+                  key={planet.uid}
                   name={planet.name}
                   type="planets"
                   id={planet.uid}
+                  uid={planet.uid}
                   imageStyle={{ width: '100%', height: '150px', objectFit: 'cover' }}
                 />
                 
@@ -115,7 +119,6 @@ export const Home = () => {
                   }}
                   onClick={() => actions.addToFavorites(planet.name)}
                 >
-                  <i class="far fa-heart"></i>
                 </button>
               </div>
             </div>
